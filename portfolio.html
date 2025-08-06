@@ -2,143 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhammad HASSAN - Flutter Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Muhammad Hassan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f4f4;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; }
 
-    nav {
-      background: #333;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-    }
+    header { background: #222; padding: 20px 0; }
+    .container { width: 90%; max-width: 1200px; margin: auto; }
 
+    nav { display: flex; justify-content: space-between; align-items: center; }
     nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
+      color: #fff; text-decoration: none; margin-left: 20px;
+      font-weight: 500; transition: color 0.3s;
     }
+    nav a:hover { color: #00bcd4; }
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(120deg, #1e88e5, #42a5f5);
-      color: white;
-    }
-
-    header h1 {
-      font-size: 3em;
-      margin: 0;
-    }
-
-    header p {
-      font-size: 1.2em;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about, .services, .skills {
-      background: white;
-      margin-bottom: 30px;
+    h2 { text-align: center; margin: 60px 0 30px; font-size: 2rem; }
+    
+    .app-section {
+      background: #fff;
       border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+      padding: 40px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+      animation: fadeInUp 1s ease;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 20px;
-      color: #333;
+    .app-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
     }
 
-    .about img {
-      max-width: 100%;
+    .app-text { flex: 1 1 300px; }
+    .app-text h3 { font-size: 1.8rem; color: #009688; margin-bottom: 10px; }
+    .app-text p { font-size: 1rem; }
+
+    .app-image { flex: 1 1 300px; }
+    .app-image img {
+      width: 100%;
       border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .screenshots {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .screenshot-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot-card:hover {
+      transform: scale(1.05);
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
       display: block;
-      margin: 20px auto;
-    }
-
-    .services ul,
-    .skills ul {
-      list-style: none;
-      padding-left: 0;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    .skills li::before {
-      content: "✔ ";
-      color: #1e88e5;
     }
 
     footer {
-      text-align: center;
-      padding: 20px;
       background: #222;
-      color: white;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 60px;
     }
 
-    @media (max-width: 600px) {
-      header h1 { font-size: 2.2em; }
-      nav { flex-direction: column; gap: 10px; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .app-content { flex-direction: column; }
+      .screenshot-card img { height: 200px; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
+  <!-- Navbar -->
   <header>
-    <h1>Muhammad HASSAN</h1>
-    <p>Flutter Developer | Mobile App Enthusiast</p>
+    <div class="container">
+      <nav>
+        <div style="color:white; font-size: 1.5rem; font-weight: bold;">Muhammad Hassan</div>
+        <div>
+          <a href="index.html">Home</a>
+          <a href="portfolio.html">Portfolio</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <section class="about">
-    <h2 class="section-title">About Me</h2>
-    <p>I’m a Flutter developer passionate about building modern, scalable, and user-friendly mobile applications. I specialize in creating visually appealing UIs, handling APIs, and delivering high-performance experiences.</p>
-    <img src="images/about-image.jpg" alt="About Me Image (replace this)">
+  <!-- Sparkle App Section -->
+  <section class="container app-section">
+    <h2>Sparkle</h2>
+    <div class="app-content">
+      <div class="app-text">
+        <h3>Sparkle</h3>
+        <p>Sparkle is a modern marriage-focused dating app designed to connect individuals seeking meaningful relationships. Built using Flutter, it offers seamless UI, real-time chat, and location-based matchmaking with a user-friendly experience.</p>
+      </div>
+      <div class="app-image">
+        <img src="images/sparkle-logo.jpg" alt="Sparkle App Screenshot" />
+      </div>
+    </div>
+    <div class="screenshots">
+      <div class="screenshot-card"><img src="images/Sparkle.png" alt="Sparkle Screenshot 1"></div>
+      <div class="screenshot-card"><img src="/images/Sparkle-1.png" alt="Sparkle Screenshot 2"></div>
+      <div class="screenshot-card"><img src="/images/Sparkle-2.png" alt="Sparkle Screenshot 3"></div>
+      <div class="screenshot-card"><img src="/images/Sparkle-3.png" alt="Sparkle Screenshot 4"></div>
+      <div class="screenshot-card"><img src="/images/Sparkle-4.png" alt="Sparkle Screenshot 5"></div>
+    </div>
   </section>
 
-  <section class="services">
-    <h2 class="section-title">What I Do</h2>
-    <ul>
-      <li>📱 Cross-platform mobile app development (iOS & Android)</li>
-      <li>🎯 Dart + Flutter animations and UI transitions</li>
-      <li>📦 Firebase integration & API handling</li>
-      <li>⚙ Clean architecture and performance optimization</li>
-    </ul>
+  <!-- Nikah Plus App Section -->
+  <section class="container app-section">
+    <h2>Nikah Plus</h2>
+    <div class="app-content">
+      <div class="app-text">
+        <h3>Nikah Plus</h3>
+        <p>Nikah Plus is a clean, privacy-focused marriage app for Muslims around the world. It features secure profiles, advanced search filters, and smooth performance across Android and iOS. Developed fully in Flutter with Firebase backend integration.</p>
+      </div>
+      <div class="app-image">
+        <img src="images/nikah-logo.jpg" alt="Nikah Plus App Screenshot" />
+      </div>
+    </div>
+    <div class="screenshots">
+      <div class="screenshot-card"><img src="images/nikah-plus-1.jpeg" alt="Nikah Plus Screenshot 1"></div>
+      <div class="screenshot-card"><img src="images/Nikah Plus-2.jpeg" alt="Nikah Plus Screenshot 2"></div>
+      <div class="screenshot-card"><img src="images/Nikah Plus-3.jpeg" alt="Nikah Plus Screenshot 3"></div>
+      <div class="screenshot-card"><img src="images/Nikahplus.jpeg" alt="Nikah Plus Screenshot 4"></div>
+      <div class="screenshot-card"><img src="images/Nikah Plus-3.jpeg" alt="Nikah Plus Screenshot 5"></div>
+    </div>
   </section>
 
-  <section class="skills">
-    <h2 class="section-title">Skills</h2>
-    <ul>
-      <li>🛠 Dart & Flutter</li>
-      <li>🎨 UI/UX Design Principles</li>
-      <li>🔌 API Integration (REST, Firebase)</li>
-      <li>🧪 Testing & Debugging</li>
-      <li>📱 Responsive & Adaptive Layouts</li>
-      <li>💡 Git & GitHub Version Control</li>
-    </ul>
-  </section>
-
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Muhammad HASSAN. All rights reserved.
+    <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
   </footer>
 
 </body>
