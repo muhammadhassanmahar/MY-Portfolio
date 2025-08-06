@@ -2,28 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio - Muhammad HASSAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhammad Hassan - Flutter Developer</title>
   <style>
-    body { margin: 0; font-family: Arial; background: #f2f2f2; }
-    nav { background: #444; display: flex; justify-content: center; gap: 20px; padding: 10px; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    .app-section { padding: 30px 20px; }
-    .app-section h2 { text-align: center; font-size: 2rem; }
-    .app { margin: 30px auto; max-width: 900px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); animation: fadeIn 1s ease-in-out; }
-    .app h3 { color: #333; }
-    .screenshots { display: flex; overflow-x: auto; gap: 10px; margin-top: 15px; }
-    .screenshots img { width: 200px; border-radius: 10px; transition: transform 0.3s; }
-    .screenshots img:hover { transform: scale(1.05); }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(120deg, #1e88e5, #42a5f5);
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .about, .services, .skills {
+      background: white;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .about img {
+      max-width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .services ul,
+    .skills ul {
+      list-style: none;
+      padding-left: 0;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .skills li::before {
+      content: "✔ ";
+      color: #1e88e5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #222;
+      color: white;
     }
 
     @media (max-width: 600px) {
-      .screenshots { flex-direction: column; align-items: center; }
-      .screenshots img { width: 90%; }
+      header h1 { font-size: 2.2em; }
+      nav { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
@@ -34,33 +103,42 @@
     <a href="portfolio.html">Portfolio</a>
   </nav>
 
-  <div class="app-section">
-    <h2>My Apps</h2>
+  <header>
+    <h1>Muhammad HASSAN</h1>
+    <p>Flutter Developer | Mobile App Enthusiast</p>
+  </header>
 
-    <div class="app" id="nikah">
-      <h3>📱 Nikah Plus – Matrimonial App</h3>
-      <p>Nikah Plus helps users find suitable matches for marriage with privacy-focused features and elegant design.</p>
-      <div class="screenshots">
-        <img src="images/Nikah Plus 1.jpeg" alt="Nikah Plus Screenshot 1">
-        <img src="images/Nikah Plus 2.jpeg" alt="Nikah Plus Screenshot 2">
-        <img src="images/Nikah Plus 3.jpeg" alt="Nikah Plus Screenshot 3">
-        <img src="images/Nikahplus.jpeg" alt="Nikah Plus Screenshot 4">
-      </div>
-    </div>
+  <section class="about">
+    <h2 class="section-title">About Me</h2>
+    <p>I’m a Flutter developer passionate about building modern, scalable, and user-friendly mobile applications. I specialize in creating visually appealing UIs, handling APIs, and delivering high-performance experiences.</p>
+    <img src="images/about-image.jpg" alt="About Me Image (replace this)">
+  </section>
 
-    <div class="app" id="sparkle">
-      <h3>💖 Sparkle – Matchmaking Platform</h3>
-      <p>Sparkle is a smart dating and matchmaking app that connects users based on shared values and interests.</p>
-      <div class="screenshots">
-        <img src="images/Sparkle (1).png" alt="Sparkle Screenshot 1">
-        <img src="images/Sparkle (2).png" alt="Sparkle Screenshot 2">
-        <img src="images/Sparkle (3).png" alt="Sparkle Screenshot 3">
-        <img src="images/Sparkle (4).png" alt="Sparkle Screenshot 4">
-        <img src="images/Sparkle 1.png" alt="Sparkle Screenshot 5">
-      </div>
-    </div>
+  <section class="services">
+    <h2 class="section-title">What I Do</h2>
+    <ul>
+      <li>📱 Cross-platform mobile app development (iOS & Android)</li>
+      <li>🎯 Dart + Flutter animations and UI transitions</li>
+      <li>📦 Firebase integration & API handling</li>
+      <li>⚙ Clean architecture and performance optimization</li>
+    </ul>
+  </section>
 
-  </div>
+  <section class="skills">
+    <h2 class="section-title">Skills</h2>
+    <ul>
+      <li>🛠 Dart & Flutter</li>
+      <li>🎨 UI/UX Design Principles</li>
+      <li>🔌 API Integration (REST, Firebase)</li>
+      <li>🧪 Testing & Debugging</li>
+      <li>📱 Responsive & Adaptive Layouts</li>
+      <li>💡 Git & GitHub Version Control</li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2025 Muhammad Hassan. All rights reserved.
+  </footer>
 
 </body>
 </html>
