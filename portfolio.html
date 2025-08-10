@@ -1,105 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio - Muhammad Hassan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:#f5f7fb;color:#222;line-height:1.6}
+    .container{width:92%;max-width:1200px;margin:24px auto}
+    header{background:#111;padding:18px 0;color:#fff}
+    nav{display:flex;justify-content:space-between;align-items:center}
+    nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:500;transition:color .2s}
+    nav a:hover{color:#00bcd4}
+    h2{font-size:1.9rem;text-align:center;margin:36px 0 20px;color:#0f766e}
 
-    header { background: #222; padding: 20px 0; }
-    .container { width: 90%; max-width: 1200px; margin: auto; }
+    .app-section{background:#fff;border-radius:12px;padding:28px;box-shadow:0 6px 20px rgba(15,23,42,.06);margin-bottom:34px}
+    .app-content{display:flex;flex-wrap:wrap;gap:28px;align-items:center}
+    .app-text{flex:1 1 320px;min-width:260px}
+    .app-text h3{color:#0f766e;font-size:1.6rem;margin-bottom:8px}
+    .app-text p{color:#333;font-size:0.98rem}
+    .app-image{flex:0 0 180px}
 
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    nav a {
-      color: #fff; text-decoration: none; margin-left: 20px;
-      font-weight: 500; transition: color 0.3s;
-    }
-    nav a:hover { color: #00bcd4; }
-
-    h2 { text-align: center; margin: 60px 0 30px; font-size: 2rem; }
-    
-    .app-section {
-      background: #fff;
-      border-radius: 10px;
-      margin-bottom: 50px;
-      padding: 40px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
-      animation: fadeInUp 1s ease;
-    }
-
-    .app-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
+    /* Screenshots grid */
+    .screenshots{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:22px;
+      align-items:start;
     }
 
-    .app-text { flex: 1 1 300px; }
-    .app-text h3 { font-size: 1.8rem; color: #009688; margin-bottom: 10px; }
-    .app-text p { font-size: 1rem; }
-
-    .app-image { flex: 1 1 300px; }
-    .app-image img {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    .phone-wrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      position:relative;
+      /* allow z-index stacking */
+      z-index:1;
     }
 
-    .screenshots {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
+    /* iPhone frame - responsive */
+    .iphone{
+      position:relative;
+      width:100%;
+      aspect-ratio: 9 / 19.5;
+      max-width: 360px;
+      margin:0 auto;
+      border-radius:36px;
+      padding:12px;
+      background:linear-gradient(180deg,#0b0b0b, #0f1724);
+      box-shadow: 0 12px 30px rgba(2,6,23,0.25), inset 0 1px 0 rgba(255,255,255,0.03);
+      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, filter .28s;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      will-change:transform,box-shadow;
     }
 
-    .screenshot-card {
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
+    .iphone::before{
+      content:'';
+      position:absolute;
+      top:10px;
+      left:50%;
+      transform:translateX(-50%);
+      width:76px;
+      height:18px;
+      background:#0b0b0b;
+      border-radius:12px;
+      z-index:6;
     }
 
-    .screenshot-card:hover {
-      transform: scale(1.05);
+    .screen{
+      position:relative;
+      width:100%;
+      height:100%;
+      border-radius:24px;
+      background:linear-gradient(180deg,#f8fbff,#e9eef8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
 
-    .screenshot-card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      display: block;
+    .screen img{
+      display:block;
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      image-rendering: -webkit-optimize-contrast;
+      transition: transform .28s;
     }
 
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 60px;
+    .screenshot-desc{
+      font-size:0.9rem;
+      color:#111827;
+      text-align:center;
+      font-weight:600;
+      padding:6px 8px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* hover (mouse) glow */
+    .iphone:hover{
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,188,212,0.08), 0 6px 18px rgba(2,6,23,0.18);
+      filter:brightness(1.02);
     }
 
-    @media (max-width: 768px) {
-      .app-content { flex-direction: column; }
-      .screenshot-card img { height: 200px; }
+    /* Active (on tap/click) — comes forward + stronger glow */
+    .phone-wrap.active{
+      z-index:1000;
+    }
+    .phone-wrap.active .iphone{
+      transform: translateY(-18px) scale(1.08);
+      box-shadow: 0 40px 80px rgba(0,188,212,0.20), 0 12px 30px rgba(2,6,23,0.28);
+      filter:brightness(1.04);
+    }
+    .phone-wrap.active .screen img{
+      transform: scale(1.02);
+    }
+
+    /* Dim other cards slightly when one is active (visual focus) */
+    .screenshots.dimmed .phone-wrap:not(.active) .iphone{
+      transform: scale(.98);
+      filter:grayscale(.06) contrast(.95) brightness(.92);
+      opacity:0.9;
+    }
+
+    /* entrance animation */
+    .iphone{opacity:0;transform-origin:center;animation:fadeInPhone .55s forwards ease-out}
+    @keyframes fadeInPhone{
+      from{opacity:0;transform:translateY(18px) scale(.98)}
+      to{opacity:1;transform:translateY(0) scale(1)}
+    }
+
+    .tools{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+    .tool{background:#f1f5f9;padding:8px 12px;border-radius:999px;font-weight:600;transition:box-shadow .25s,transform .25s}
+    .tool:hover{box-shadow:0 6px 18px rgba(0,188,212,0.16);transform:translateY(-4px)}
+
+    footer{margin-top:28px;padding:24px 0;background:#0b1120;color:#cbd5e1;text-align:center;border-radius:8px}
+    footer a{color:#00bcd4;text-decoration:none;font-weight:600}
+
+    @media (min-width:980px){
+      .screenshots{grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
+      .iphone{max-width:400px; aspect-ratio: 9/20;}
+    }
+    @media (max-width:480px){
+      .screenshots{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+      .iphone{max-width:260px;border-radius:30px;padding:10px}
+      .iphone::before{width:54px;height:14px;top:8px}
+      .screenshot-desc{font-size:0.82rem}
     }
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
   <header>
     <div class="container">
       <nav>
-        <div style="color:white; font-size: 1.5rem; font-weight: bold;">Muhammad Hassan</div>
+        <div style="font-weight:700;font-size:1.2rem;color:#fff">Muhammad Hassan</div>
         <div>
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
@@ -108,52 +171,143 @@
     </div>
   </header>
 
-  <!-- Sparkle App Section -->
-  <section class="container app-section">
-    <h2>Sparkle</h2>
-    <div class="app-content">
-      <div class="app-text">
-        <h3>Sparkle</h3>
-        <p>Sparkle is a modern marriage-focused dating app designed to connect individuals seeking meaningful relationships. Built using Flutter, it offers seamless UI, real-time chat, and location-based matchmaking with a user-friendly experience.</p>
+  <main class="container">
+    <!-- Example: Nikah Plus -->
+    <section class="app-section">
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Nikah Plus</h3>
+          <p>Nikah Plus is a privacy-first marriage app tailored for Muslims worldwide. Secure profiles, advanced matchmaking filters, and real-time updates for respectful matchmaking. Built with Flutter, Firebase, and MongoDB; versioned via Git & GitHub.</p>
+          <div class="tools">
+            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
+            <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
+          </div>
+        </div>
+        <div class="app-image">
+          <img src="images/nikah-logo.jpg" alt="Nikah Plus logo" style="width:140px;border-radius:12px;">
+        </div>
       </div>
-      <div class="app-image">
-        <img src="images/sparkle-logo.jpg" alt="Sparkle App Screenshot" />
-      </div>
-    </div>
-    <div class="screenshots">
-      <div class="screenshot-card"><img src="images/Sparkle.png" alt="Sparkle Screenshot 1"></div>
-      <div class="screenshot-card"><img src="images/Sparkle-1.png" alt="Sparkle Screenshot 2"></div>
-      <div class="screenshot-card"><img src="images/Sparkle-2.png" alt="Sparkle Screenshot 3"></div>
-      <div class="screenshot-card"><img src="images/Sparkle-3.png" alt="Sparkle Screenshot 4"></div>
-      <div class="screenshot-card"><img src="images/Sparkle-4.png" alt="Sparkle Screenshot 5"></div>
-    </div>
-  </section>
 
-  <!-- Nikah Plus App Section -->
-  <section class="container app-section">
-    <h2>Nikah Plus</h2>
-    <div class="app-content">
-      <div class="app-text">
-        <h3>Nikah Plus</h3>
-        <p>Nikah Plus is a clean, privacy-focused marriage app for Muslims around the world. It features secure profiles, advanced search filters, and smooth performance across Android and iOS. Developed fully in Flutter with Firebase backend integration.</p>
-      </div>
-      <div class="app-image">
-        <img src="images/nikah-logo.jpg" alt="Nikah Plus App Screenshot" />
-      </div>
-    </div>
-    <div class="screenshots">
-      <div class="screenshot-card"><img src="images/nikah-plus-1.jpeg" alt="Nikah Plus Screenshot 1"></div>
-      <div class="screenshot-card"><img src="images/Nikah Plus-2.jpeg" alt="Nikah Plus Screenshot 2"></div>
-      <div class="screenshot-card"><img src="images/Nikah Plus-3.jpeg" alt="Nikah Plus Screenshot 3"></div>
-      <div class="screenshot-card"><img src="images/Nikahplus.jpeg" alt="Nikah Plus Screenshot 4"></div>
-      <div class="screenshot-card"><img src="images/Nikah Plus-3.jpeg" alt="Nikah Plus Screenshot 5"></div>
-    </div>
-  </section>
+      <div class="screenshots" id="nikah-screens">
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Nikahplus.jpeg" alt="Home Screen"></div></div>
+          <div class="screenshot-desc">Elegant home screen with easy navigation</div>
+        </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
-  </footer>
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Sign-up.jpeg" alt="Sign Up"></div></div>
+          <div class="screenshot-desc">Create your profile in simple steps</div>
+        </div>
 
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Sign-up2.jpeg" alt="Sign Up Details"></div></div>
+          <div class="screenshot-desc">Add personal details to find better matches</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="images/Nikahplus.jpeg" alt="Matches Screen"></div></div>
+          <div class="screenshot-desc">Browse through suggested matches</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Welcome-screen.jpeg" alt="Welcome Screen"></div></div>
+          <div class="screenshot-desc">Warm welcome screen to start your journey</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Example: Sparkle -->
+    <section class="app-section">
+      <h2>Sparkle</h2>
+      <div class="app-content">
+        <div class="app-text">
+          <h3>Sparkle</h3>
+          <p>Sparkle connects people seeking committed relationships. It includes real-time chat, location-aware discovery and profile verification — built with Flutter + Firebase for a smooth cross-platform experience.</p>
+          <div class="tools">
+            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
+            <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
+          </div>
+        </div>
+        <div class="app-image"><img src="images/sparkle-logo.jpg" alt="Sparkle" style="width:120px;border-radius:10px"></div>
+      </div>
+
+      <div class="screenshots" id="sparkle-screens">
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="images/Discover-Matches.png" alt="Discover Matches"></div></div>
+          <div class="screenshot-desc">Discover potential matches near you</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Profile-Screen.png" alt="Profile Screen"></div></div>
+          <div class="screenshot-desc">View and edit your profile details</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Settings-Screen.png" alt="Settings"></div></div>
+          <div class="screenshot-desc">Customize your app preferences</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Sparkle-inbox.png" alt="Inbox"></div></div>
+          <div class="screenshot-desc">Chat instantly with your matches</div>
+        </div>
+
+        <div class="phone-wrap">
+          <div class="iphone"><div class="screen"><img src="/images/Sparkle-Welcome.png" alt="Welcome"></div></div>
+          <div class="screenshot-desc">Friendly welcome screen to get started</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
+      <p>Email: <a href="mailto:immaharhasaan@gmail.com">immaharhasaan@gmail.com</a></p>
+    </footer>
+  </main>
+
+  <script>
+    // Make phone-wrap clickable: toggle active class and dim siblings
+    (function(){
+      const screenshotGroups = document.querySelectorAll('.screenshots');
+
+      screenshotGroups.forEach(group => {
+        const phoneWraps = Array.from(group.querySelectorAll('.phone-wrap'));
+
+        // click handler for each phone
+        phoneWraps.forEach(p => {
+          const iphone = p.querySelector('.iphone');
+
+          iphone.addEventListener('click', (e) => {
+            e.stopPropagation(); // stop event from reaching document
+
+            // If this is already active -> deactivate
+            const alreadyActive = p.classList.contains('active');
+
+            // remove active from all in this group
+            phoneWraps.forEach(x => x.classList.remove('active'));
+            group.classList.remove('dimmed');
+
+            if (!alreadyActive) {
+              // activate this and dim others
+              p.classList.add('active');
+              group.classList.add('dimmed');
+            }
+            // if alreadyActive, we've removed it above -> nothing else to do
+          });
+        });
+
+        // clicking outside (on document) closes any active phone in this group
+        document.addEventListener('click', () => {
+          phoneWraps.forEach(x => x.classList.remove('active'));
+          group.classList.remove('dimmed');
+        });
+
+        // prevent clicks inside phone-wrap from bubbling up to document when clicking description
+        group.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
