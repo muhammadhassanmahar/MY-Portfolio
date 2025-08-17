@@ -15,154 +15,64 @@
     nav a:hover{color:#00bcd4}
     h2{font-size:1.9rem;text-align:center;margin:36px 0 20px;color:#0f766e}
 
+    .typing {
+      font-weight:700;
+      font-size:1.2rem;
+      color:#fff;
+      white-space:nowrap;
+      overflow:hidden;
+      border-right:2px solid #fff;
+      width:0;
+      animation:typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      0% { width: 0 }
+      33% { width: 13ch }
+      66% { width: 20ch }
+      100% { width: 33ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    /* Rest of your styles remain exactly the same (no change) */
     .app-section{background:#fff;border-radius:12px;padding:28px;box-shadow:0 6px 20px rgba(15,23,42,.06);margin-bottom:34px}
     .app-content{display:flex;flex-wrap:wrap;gap:28px;align-items:center}
     .app-text{flex:1 1 320px;min-width:260px}
     .app-text h3{color:#0f766e;font-size:1.6rem;margin-bottom:8px}
     .app-text p{color:#333;font-size:0.98rem}
     .app-image{flex:0 0 180px}
-
-    /* Screenshots grid */
-    .screenshots{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap:22px;
-      align-items:start;
-    }
-
-    .phone-wrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      position:relative;
-      /* allow z-index stacking */
-      z-index:1;
-    }
-
-    /* iPhone frame - responsive */
-    .iphone{
-      position:relative;
-      width:100%;
-      aspect-ratio: 9 / 19.5;
-      max-width: 360px;
-      margin:0 auto;
-      border-radius:36px;
-      padding:12px;
-      background:linear-gradient(180deg,#0b0b0b, #0f1724);
-      box-shadow: 0 12px 30px rgba(2,6,23,0.25), inset 0 1px 0 rgba(255,255,255,0.03);
-      transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s, filter .28s;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      will-change:transform,box-shadow;
-    }
-
-    .iphone::before{
-      content:'';
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:76px;
-      height:18px;
-      background:#0b0b0b;
-      border-radius:12px;
-      z-index:6;
-    }
-
-    .screen{
-      position:relative;
-      width:100%;
-      height:100%;
-      border-radius:24px;
-      background:linear-gradient(180deg,#f8fbff,#e9eef8);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-
-    .screen img{
-      display:block;
-      max-width:100%;
-      max-height:100%;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      image-rendering: -webkit-optimize-contrast;
-      transition: transform .28s;
-    }
-
-    .screenshot-desc{
-      font-size:0.9rem;
-      color:#111827;
-      text-align:center;
-      font-weight:600;
-      padding:6px 8px;
-    }
-
-    /* hover (mouse) glow */
-    .iphone:hover{
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,188,212,0.08), 0 6px 18px rgba(2,6,23,0.18);
-      filter:brightness(1.02);
-    }
-
-    /* Active (on tap/click) — comes forward + stronger glow */
-    .phone-wrap.active{
-      z-index:1000;
-    }
-    .phone-wrap.active .iphone{
-      transform: translateY(-18px) scale(1.08);
-      box-shadow: 0 40px 80px rgba(0,188,212,0.20), 0 12px 30px rgba(2,6,23,0.28);
-      filter:brightness(1.04);
-    }
-    .phone-wrap.active .screen img{
-      transform: scale(1.02);
-    }
-
-    /* Dim other cards slightly when one is active (visual focus) */
-    .screenshots.dimmed .phone-wrap:not(.active) .iphone{
-      transform: scale(.98);
-      filter:grayscale(.06) contrast(.95) brightness(.92);
-      opacity:0.9;
-    }
-
-    /* entrance animation */
-    .iphone{opacity:0;transform-origin:center;animation:fadeInPhone .55s forwards ease-out}
-    @keyframes fadeInPhone{
-      from{opacity:0;transform:translateY(18px) scale(.98)}
-      to{opacity:1;transform:translateY(0) scale(1)}
-    }
-
+    .screenshots{margin-top:22px;display:grid;grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));gap:22px;align-items:start}
+    .phone-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:1}
+    .iphone{position:relative;width:100%;aspect-ratio: 9 / 19.5;max-width: 360px;margin:0 auto;border-radius:36px;padding:12px;background:linear-gradient(180deg,#0b0b0b, #0f1724);box-shadow: 0 12px 30px rgba(2,6,23,0.25), inset 0 1px 0 rgba(255,255,255,0.03);transition:transform .28s, box-shadow .28s, filter .28s;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;will-change:transform,box-shadow;opacity:0;transform-origin:center;animation:fadeInPhone .55s forwards ease-out}
+    .iphone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:76px;height:18px;background:#0b0b0b;border-radius:12px;z-index:6}
+    .screen{position:relative;width:100%;height:100%;border-radius:24px;background:linear-gradient(180deg,#f8fbff,#e9eef8);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .screen img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;image-rendering: -webkit-optimize-contrast;transition: transform .28s}
+    .screenshot-desc{font-size:0.9rem;color:#111827;text-align:center;font-weight:600;padding:6px 8px}
+    .iphone:hover{transform: translateY(-8px) scale(1.02);box-shadow: 0 20px 40px rgba(0,188,212,0.08), 0 6px 18px rgba(2,6,23,0.18);filter:brightness(1.02)}
+    .phone-wrap.active{z-index:1000}
+    .phone-wrap.active .iphone{transform: translateY(-18px) scale(1.08);box-shadow: 0 40px 80px rgba(0,188,212,0.20), 0 12px 30px rgba(2,6,23,0.28);filter:brightness(1.04)}
+    .phone-wrap.active .screen img{transform: scale(1.02)}
+    .screenshots.dimmed .phone-wrap:not(.active) .iphone{transform: scale(.98);filter:grayscale(.06) contrast(.95) brightness(.92);opacity:0.9}
+    @keyframes fadeInPhone{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
     .tools{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
     .tool{background:#f1f5f9;padding:8px 12px;border-radius:999px;font-weight:600;transition:box-shadow .25s,transform .25s}
     .tool:hover{box-shadow:0 6px 18px rgba(0,188,212,0.16);transform:translateY(-4px)}
-
+    .view-project {display:inline-block;margin-top:18px;background:#0f766e;color:#fff;font-weight:600;padding:10px 18px;border-radius:8px;text-decoration:none;transition:background .3s ease;}
+    .view-project:hover {background:#115e59}
     footer{margin-top:28px;padding:24px 0;background:#0b1120;color:#cbd5e1;text-align:center;border-radius:8px}
     footer a{color:#00bcd4;text-decoration:none;font-weight:600}
-
-    @media (min-width:980px){
-      .screenshots{grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
-      .iphone{max-width:400px; aspect-ratio: 9/20;}
-    }
-    @media (max-width:480px){
-      .screenshots{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-      .iphone{max-width:260px;border-radius:30px;padding:10px}
-      .iphone::before{width:54px;height:14px;top:8px}
-      .screenshot-desc{font-size:0.82rem}
-    }
+    @media (min-width:980px){.screenshots{grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}.iphone{max-width:400px; aspect-ratio: 9/20;}}
+    @media (max-width:480px){.screenshots{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}.iphone{max-width:260px;border-radius:30px;padding:10px}.iphone::before{width:54px;height:14px;top:8px}.screenshot-desc{font-size:0.82rem}}
   </style>
 </head>
 <body>
   <header>
     <div class="container">
       <nav>
-        <div style="font-weight:700;font-size:1.2rem;color:#fff">Muhammad Hassan</div>
+        <div class="typing">Muhammad Hassan - Full Stack Developer - Problem Solver</div>
         <div>
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
@@ -172,7 +82,7 @@
   </header>
 
   <main class="container">
-    <!-- Example: Nikah Plus -->
+    <!-- Nikah Plus -->
     <section class="app-section">
       <div class="app-content">
         <div class="app-text">
@@ -182,6 +92,7 @@
             <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
             <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
           </div>
+          <a class="view-project" href="https://github.com/muhammadhassanmahar/Nikah_Plus" target="_blank">View Project</a>
         </div>
         <div class="app-image">
           <img src="images/nikah-logo.jpg" alt="Nikah Plus logo" style="width:140px;border-radius:12px;">
@@ -193,22 +104,10 @@
           <div class="iphone"><div class="screen"><img src="images/Nikahplus.jpeg" alt="Home Screen"></div></div>
           <div class="screenshot-desc">Elegant home screen with easy navigation</div>
         </div>
-
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Sign-up.jpeg" alt="Sign Up"></div></div>
           <div class="screenshot-desc">Create your profile in simple steps</div>
         </div>
-
-        <div class="phone-wrap">
-          <div class="iphone"><div class="screen"><img src="images/Sign-up2.jpeg" alt="Sign Up Details"></div></div>
-          <div class="screenshot-desc">Add personal details to find better matches</div>
-        </div>
-
-        <div class="phone-wrap">
-          <div class="iphone"><div class="screen"><img src="images/Nikahplus.jpeg" alt="Matches Screen"></div></div>
-          <div class="screenshot-desc">Browse through suggested matches</div>
-        </div>
-
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Welcome-screen.jpeg" alt="Welcome Screen"></div></div>
           <div class="screenshot-desc">Warm welcome screen to start your journey</div>
@@ -216,7 +115,7 @@
       </div>
     </section>
 
-    <!-- Example: Sparkle -->
+    <!-- Sparkle -->
     <section class="app-section">
       <h2>Sparkle</h2>
       <div class="app-content">
@@ -227,6 +126,7 @@
             <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
             <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
           </div>
+          <a class="view-project" href="https://github.com/muhammadhassanmahar/Sparkle" target="_blank">View Project</a>
         </div>
         <div class="app-image"><img src="images/sparkle-logo.jpg" alt="Sparkle" style="width:120px;border-radius:10px"></div>
       </div>
@@ -236,22 +136,10 @@
           <div class="iphone"><div class="screen"><img src="images/Discover-Matches.png" alt="Discover Matches"></div></div>
           <div class="screenshot-desc">Discover potential matches near you</div>
         </div>
-
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Profile-Screen.png" alt="Profile Screen"></div></div>
           <div class="screenshot-desc">View and edit your profile details</div>
         </div>
-
-        <div class="phone-wrap">
-          <div class="iphone"><div class="screen"><img src="images/Settings-Screen.png" alt="Settings"></div></div>
-          <div class="screenshot-desc">Customize your app preferences</div>
-        </div>
-
-        <div class="phone-wrap">
-          <div class="iphone"><div class="screen"><img src="images/Sparkle-inbox.png" alt="Inbox"></div></div>
-          <div class="screenshot-desc">Chat instantly with your matches</div>
-        </div>
-
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Sparkle-Welcome.png" alt="Welcome"></div></div>
           <div class="screenshot-desc">Friendly welcome screen to get started</div>
@@ -266,43 +154,27 @@
   </main>
 
   <script>
-    // Make phone-wrap clickable: toggle active class and dim siblings
     (function(){
       const screenshotGroups = document.querySelectorAll('.screenshots');
-
       screenshotGroups.forEach(group => {
         const phoneWraps = Array.from(group.querySelectorAll('.phone-wrap'));
-
-        // click handler for each phone
         phoneWraps.forEach(p => {
           const iphone = p.querySelector('.iphone');
-
           iphone.addEventListener('click', (e) => {
-            e.stopPropagation(); // stop event from reaching document
-
-            // If this is already active -> deactivate
+            e.stopPropagation();
             const alreadyActive = p.classList.contains('active');
-
-            // remove active from all in this group
             phoneWraps.forEach(x => x.classList.remove('active'));
             group.classList.remove('dimmed');
-
             if (!alreadyActive) {
-              // activate this and dim others
               p.classList.add('active');
               group.classList.add('dimmed');
             }
-            // if alreadyActive, we've removed it above -> nothing else to do
           });
         });
-
-        // clicking outside (on document) closes any active phone in this group
         document.addEventListener('click', () => {
           phoneWraps.forEach(x => x.classList.remove('active'));
           group.classList.remove('dimmed');
         });
-
-        // prevent clicks inside phone-wrap from bubbling up to document when clicking description
         group.addEventListener('click', (e) => {
           e.stopPropagation();
         });
