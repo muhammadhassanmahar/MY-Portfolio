@@ -5,165 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfolio - Muhammad Hassan</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/logo.jpg">
   <style>
+    :root {
+      --bg-color: #f5f7fb;
+      --text-color: #222;
+      --card-bg: #fff;
+      --accent: #00bcd4;
+      --nav-bg: #111;
+      --footer-bg: #0b1120;
+    }
+    body.dark {
+      --bg-color: #0f172a;
+      --text-color: #e2e8f0;
+      --card-bg: #1e293b;
+      --nav-bg: #1e293b;
+      --footer-bg: #0f172a;
+    }
+
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:#f5f7fb;color:#222;line-height:1.6}
+    body{font-family:'Poppins',sans-serif;background:var(--bg-color);color:var(--text-color);line-height:1.6;transition:background .3s,color .3s}
     .container{width:92%;max-width:1200px;margin:24px auto}
-    header{background:#111;padding:18px 0;color:#fff}
+
+    header{background:var(--nav-bg);padding:18px 0;color:#fff}
     nav{display:flex;justify-content:space-between;align-items:center}
     nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:500;transition:color .2s}
-    nav a:hover{color:#00bcd4}
-    h2{font-size:1.9rem;text-align:center;margin:36px 0 20px;color:#0f766e}
+    nav a:hover{color:var(--accent)}
+    .toggle-btn{cursor:pointer;background:none;border:none;color:#fff;font-size:1.2rem;margin-left:20px}
 
-    .app-section{background:#fff;border-radius:12px;padding:28px;box-shadow:0 6px 20px rgba(15,23,42,.06);margin-bottom:34px}
+    h2{font-size:1.9rem;text-align:center;margin:36px 0 20px;color:var(--accent)}
+
+    .app-section{background:var(--card-bg);border-radius:12px;padding:28px;box-shadow:0 6px 20px rgba(15,23,42,.06);margin-bottom:34px;transition:background .3s}
     .app-content{display:flex;flex-wrap:wrap;gap:28px;align-items:center}
     .app-text{flex:1 1 320px;min-width:260px}
-    .app-text h3{color:#0f766e;font-size:1.6rem;margin-bottom:8px}
-    .app-text p{color:#333;font-size:0.98rem}
+    .app-text h3{color:var(--accent);font-size:1.6rem;margin-bottom:8px}
+    .app-text p{font-size:0.98rem}
     .app-image{flex:0 0 180px}
 
-    .screenshots{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap:22px;
-      align-items:start;
-    }
+    .screenshots{margin-top:22px;display:grid;grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));gap:22px;align-items:start}
 
-    .phone-wrap{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:10px;
-      position:relative;
-      z-index:1;
-    }
+    .phone-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .iphone{position:relative;width:100%;aspect-ratio: 9 / 19.5;max-width: 300px;margin:0 auto;border-radius:36px;padding:12px;background:linear-gradient(180deg,#0b0b0b,#0f1724);box-shadow:0 12px 30px rgba(2,6,23,0.25);overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .iphone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:76px;height:18px;background:#0b0b0b;border-radius:12px}
+    .screen{position:relative;width:100%;height:100%;border-radius:24px;background:#f8fbff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .screen img{max-width:100%;max-height:100%;object-fit:contain}
 
-    .iphone{
-      position:relative;
-      width:100%;
-      aspect-ratio: 9 / 19.5;
-      max-width: 360px;
-      margin:0 auto;
-      border-radius:36px;
-      padding:12px;
-      background:linear-gradient(180deg,#0b0b0b, #0f1724);
-      box-shadow: 0 12px 30px rgba(2,6,23,0.25), inset 0 1px 0 rgba(255,255,255,0.03);
-      transition:transform .28s, box-shadow .28s, filter .28s;
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      will-change:transform,box-shadow;
-    }
-
-    .iphone::before{
-      content:'';
-      position:absolute;
-      top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      width:76px;
-      height:18px;
-      background:#0b0b0b;
-      border-radius:12px;
-      z-index:6;
-    }
-
-    .screen{
-      position:relative;
-      width:100%;
-      height:100%;
-      border-radius:24px;
-      background:linear-gradient(180deg,#f8fbff,#e9eef8);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-    }
-
-    .screen img{
-      display:block;
-      max-width:100%;
-      max-height:100%;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      image-rendering: -webkit-optimize-contrast;
-      transition: transform .28s;
-    }
-
-    .screenshot-desc{
-      font-size:0.9rem;
-      color:#111827;
-      text-align:center;
-      font-weight:600;
-      padding:6px 8px;
-    }
-
-    .iphone:hover{
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,188,212,0.08), 0 6px 18px rgba(2,6,23,0.18);
-      filter:brightness(1.02);
-    }
-
-    .phone-wrap.active{
-      z-index:1000;
-    }
-    .phone-wrap.active .iphone{
-      transform: translateY(-18px) scale(1.08);
-      box-shadow: 0 40px 80px rgba(0,188,212,0.20), 0 12px 30px rgba(2,6,23,0.28);
-      filter:brightness(1.04);
-    }
-    .phone-wrap.active .screen img{
-      transform: scale(1.02);
-    }
-
-    .screenshots.dimmed .phone-wrap:not(.active) .iphone{
-      transform: scale(.98);
-      filter:grayscale(.06) contrast(.95) brightness(.92);
-      opacity:0.9;
-    }
-
-    .iphone{opacity:0;transform-origin:center;animation:fadeInPhone .55s forwards ease-out}
-    @keyframes fadeInPhone{
-      from{opacity:0;transform:translateY(18px) scale(.98)}
-      to{opacity:1;transform:translateY(0) scale(1)}
-    }
+    .screenshot-desc{font-size:0.9rem;color:var(--text-color);text-align:center;font-weight:600;padding:6px 8px}
 
     .tools{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
-    .tool{background:#f1f5f9;padding:8px 12px;border-radius:999px;font-weight:600;transition:box-shadow .25s,transform .25s}
-    .tool:hover{box-shadow:0 6px 18px rgba(0,188,212,0.16);transform:translateY(-4px)}
+    .tool{background:#f1f5f9;padding:8px 12px;border-radius:999px;font-weight:600;transition:transform .25s}
+    body.dark .tool{background:#334155;color:#e2e8f0}
+    .tool:hover{transform:translateY(-4px)}
 
-    .view-project {
-      display:inline-block;
-      margin-top:18px;
-      background:#0f766e;
-      color:#fff;
-      font-weight:600;
-      padding:10px 18px;
-      border-radius:8px;
-      text-decoration:none;
-      transition:background .3s ease;
-    }
-    .view-project:hover {
-      background:#115e59;
-    }
+    .view-project{display:inline-block;margin-top:18px;background:var(--accent);color:#fff;font-weight:600;padding:10px 18px;border-radius:8px;text-decoration:none;transition:background .3s}
+    .view-project:hover{background:#0097a7}
 
-    footer{margin-top:28px;padding:24px 0;background:#0b1120;color:#cbd5e1;text-align:center;border-radius:8px}
-    footer a{color:#00bcd4;text-decoration:none;font-weight:600}
+    footer{margin-top:28px;padding:24px 0;background:var(--footer-bg);color:#cbd5e1;text-align:center;border-radius:8px}
+    footer a{color:var(--accent);text-decoration:none;font-weight:600}
 
-    @media (min-width:980px){
-      .screenshots{grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
-      .iphone{max-width:400px; aspect-ratio: 9/20;}
-    }
-    @media (max-width:480px){
-      .screenshots{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
-      .iphone{max-width:260px;border-radius:30px;padding:10px}
-      .iphone::before{width:54px;height:14px;top:8px}
-      .screenshot-desc{font-size:0.82rem}
-    }
+    @media (min-width:980px){.iphone{max-width:360px}}
+    @media (max-width:480px){.iphone{max-width:260px;border-radius:30px;padding:10px}.iphone::before{width:54px;height:14px;top:8px}.screenshot-desc{font-size:0.82rem}}
   </style>
 </head>
 <body>
@@ -174,6 +75,8 @@
         <div>
           <a href="index.html">Home</a>
           <a href="portfolio.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+          <button class="toggle-btn" id="toggleBtn">🌙</button>
         </div>
       </nav>
     </div>
@@ -185,10 +88,9 @@
       <div class="app-content">
         <div class="app-text">
           <h3>Nikah Plus</h3>
-          <p>Nikah Plus is a privacy-first marriage app tailored for Muslims worldwide. Secure profiles, advanced matchmaking filters, and real-time updates for respectful matchmaking. Built with Flutter, Firebase, and MongoDB; versioned via Git & GitHub.</p>
+          <p>Nikah Plus is a privacy-first marriage app tailored for Muslims worldwide. Secure profiles, advanced matchmaking filters, and real-time updates for respectful matchmaking. Built with Flutter, Firebase, and MongoDB.</p>
           <div class="tools">
-            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
-            <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
+            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div><div class="tool">MongoDB</div>
           </div>
           <a class="view-project" href="https://github.com/muhammadhassanmahar/Nikah_Plus" target="_blank">View Project</a>
         </div>
@@ -197,7 +99,7 @@
         </div>
       </div>
 
-      <div class="screenshots" id="nikah-screens">
+      <div class="screenshots">
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Nikahplus.jpeg" alt="Home Screen"></div></div>
           <div class="screenshot-desc">Elegant home screen with easy navigation</div>
@@ -207,7 +109,7 @@
           <div class="screenshot-desc">Create your profile in simple steps</div>
         </div>
         <div class="phone-wrap">
-          <div class="iphone"><div class="screen"><img src="images/Welcome-screen.jpeg" alt="Welcome Screen"></div></div>
+          <div class="iphone"><div class="screen"><img src="images/Welcome-screen.jpeg" alt="Welcome"></div></div>
           <div class="screenshot-desc">Warm welcome screen to start your journey</div>
         </div>
       </div>
@@ -215,21 +117,21 @@
 
     <!-- Sparkle -->
     <section class="app-section">
-      <h2>Sparkle</h2>
       <div class="app-content">
         <div class="app-text">
           <h3>Sparkle</h3>
           <p>Sparkle connects people seeking committed relationships. It includes real-time chat, location-aware discovery and profile verification — built with Flutter + Firebase for a smooth cross-platform experience.</p>
           <div class="tools">
-            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
-            <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
+            <div class="tool">Flutter</div><div class="tool">Firebase</div><div class="tool">MongoDB</div>
           </div>
           <a class="view-project" href="https://github.com/muhammadhassanmahar/Sparkle" target="_blank">View Project</a>
         </div>
-        <div class="app-image"><img src="images/sparkle-logo.jpg" alt="Sparkle" style="width:120px;border-radius:10px"></div>
+        <div class="app-image">
+          <img src="images/sparkle-logo.jpg" alt="Sparkle" style="width:120px;border-radius:10px">
+        </div>
       </div>
 
-      <div class="screenshots" id="sparkle-screens">
+      <div class="screenshots">
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Discover-Matches.png" alt="Discover Matches"></div></div>
           <div class="screenshot-desc">Discover potential matches near you</div>
@@ -247,21 +149,21 @@
 
     <!-- Muna Match -->
     <section class="app-section">
-      <h2>Muna Match</h2>
       <div class="app-content">
         <div class="app-text">
           <h3>Muna Match</h3>
           <p>Muna Match is a modern marriage app designed for meaningful connections. It features a smooth onboarding, profile customization, and intelligent matchmaking powered by Flutter and Firebase with a secure backend.</p>
           <div class="tools">
-            <div class="tool">Flutter</div><div class="tool">Python</div><div class="tool">Firebase</div>
-            <div class="tool">MongoDB</div><div class="tool">GitHub</div><div class="tool">Git</div>
+            <div class="tool">Flutter</div><div class="tool">Firebase</div><div class="tool">MongoDB</div>
           </div>
           <a class="view-project" href="https://github.com/muhammadhassanmahar/Muna-Match" target="_blank">View Project</a>
         </div>
-        <div class="app-image"><img src="/images/Muna Match- Home Screen.png" alt="Muna Match" style="width:120px;border-radius:10px"></div>
+        <div class="app-image">
+          <img src="images/muna-logo.jpg" alt="Muna Match" style="width:120px;border-radius:10px">
+        </div>
       </div>
 
-      <div class="screenshots" id="muna-screens">
+      <div class="screenshots">
         <div class="phone-wrap">
           <div class="iphone"><div class="screen"><img src="images/Muna Match- Home Screen.png" alt="Home Screen"></div></div>
           <div class="screenshot-desc">Clean and modern home screen</div>
@@ -276,40 +178,19 @@
         </div>
       </div>
     </section>
-
-    <footer>
-      <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
-      <p>Email: <a href="mailto:immaharhasaan@gmail.com">immaharhasaan@gmail.com</a></p>
-    </footer>
   </main>
 
+  <footer>
+    <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
+    <p>Email: <a href="mailto:immaharhasaan@gmail.com">immaharhasaan@gmail.com</a></p>
+  </footer>
+
   <script>
-    (function(){
-      const screenshotGroups = document.querySelectorAll('.screenshots');
-      screenshotGroups.forEach(group => {
-        const phoneWraps = Array.from(group.querySelectorAll('.phone-wrap'));
-        phoneWraps.forEach(p => {
-          const iphone = p.querySelector('.iphone');
-          iphone.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const alreadyActive = p.classList.contains('active');
-            phoneWraps.forEach(x => x.classList.remove('active'));
-            group.classList.remove('dimmed');
-            if (!alreadyActive) {
-              p.classList.add('active');
-              group.classList.add('dimmed');
-            }
-          });
-        });
-        document.addEventListener('click', () => {
-          phoneWraps.forEach(x => x.classList.remove('active'));
-          group.classList.remove('dimmed');
-        });
-        group.addEventListener('click', (e) => {
-          e.stopPropagation();
-        });
-      });
-    })();
+    const toggleBtn = document.getElementById('toggleBtn');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    });
   </script>
 </body>
 </html>
