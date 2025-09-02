@@ -99,13 +99,20 @@
     }
 
     /* Footer */
-    footer { background: #222; color: #aaa; text-align: center; padding: 40px 20px; margin-top: 60px; }
-    .social-icons { margin-top: 15px; display: flex; justify-content: center; gap: 25px; }
-    .social-icons img { width: 30px; }
+    .footer { background: #111; color: #ccc; padding: 50px 20px; margin-top: 60px; }
+    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
+    .footer-col { flex: 1 1 200px; }
+    .footer-col h3 { color: #fff; margin-bottom: 20px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; color: #ccc; }
+    .footer-col a { color: #ccc; text-decoration: none; }
+    .footer-col a:hover { color: var(--primary); }
+    .social-icons { display: flex; gap: 15px; margin-top: 10px; }
+    .social-icons a { font-size: 1.5rem; color: #fff; transition: color 0.3s; }
+    .social-icons a:hover { color: var(--primary); }
+    .footer-bottom { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; color: #888; font-size: 0.9rem; }
     @media (max-width:768px) {
-      .skill-box { flex: 1 1 100%; }
-      .testimonial-card { flex: 0 0 80%; min-width: 80%; }
-      .testimonial-track { animation-duration: 30s; }
+      .footer-container { flex-direction: column; }
     }
   </style>
 </head>
@@ -148,66 +155,28 @@
       <!-- ✅ Technical Skills -->
       <div class="skill-box">
         <h3>Technical Skills</h3>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-flutter"></i> Flutter</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-dart"></i> Dart</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-solid fa-database"></i> Firebase</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
-        </div>
-        <!-- New -->
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-python"></i> Python</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-solid fa-leaf"></i> MongoDB</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-flutter"></i> Flutter</div><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-dart"></i> Dart</div><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-database"></i> Firebase</div><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-python"></i> Python</div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-leaf"></i> MongoDB</div><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
       </div>
 
       <!-- ✅ Soft Skills -->
       <div class="skill-box">
         <h3>Soft Skills</h3>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-solid fa-comments"></i> Communication</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-solid fa-people-group"></i> Teamwork</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-comments"></i> Communication</div><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-people-group"></i> Teamwork</div><div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
       </div>
 
       <!-- ✅ Tools -->
       <div class="skill-box">
         <h3>Tools</h3>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-git-alt"></i> Git</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-github"></i> GitHub</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
-        </div>
-        <!-- New Tools -->
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-solid fa-paper-plane"></i> Postman</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-slack"></i> Slack</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-label"><i class="fa-brands fa-bitbucket"></i> Bitbucket</div>
-          <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-git-alt"></i> Git</div><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-github"></i> GitHub</div><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-paper-plane"></i> Postman</div><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-slack"></i> Slack</div><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-bitbucket"></i> Bitbucket</div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
       </div>
     </div>
   </section>
@@ -226,20 +195,48 @@
       <div class="testimonial-card"><p>“Food delivery app scaled smoothly to thousands of users.”</p><h4>- Ayesha Malik, Foodiez</h4></div>
       <div class="testimonial-card"><p>“Donation app for our NGO delivered on time and within budget.”</p><h4>- Bilal Ahmed, HelpingHands</h4></div>
       <div class="testimonial-card"><p>“Real estate app with maps and listings that work seamlessly.”</p><h4>- Sophia Khan, DreamHomes</h4></div>
-      <!-- repeat to keep infinite effect -->
-      <div class="testimonial-card"><p>“Our e-commerce app was delivered ahead of schedule with a flawless checkout system.”</p><h4>- Ali Khan, ShopNow</h4></div>
-      <div class="testimonial-card"><p>“Secure healthcare app built for our patients. Very reliable and compliant.”</p><h4>- Dr. Sarah, MedLink</h4></div>
-      <div class="testimonial-card"><p>“The LMS app for our academy works flawlessly, students love it.”</p><h4>- John Smith, EduPro</h4></div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Muhammad Hassan. All rights reserved.</p>
-    <div class="social-icons">
-      <a href="https://github.com/muhammadhassanmahar" target="_blank"><img src="images/github.png" alt="GitHub" /></a>
-      <a href="https://www.linkedin.com/in/muhammad-hassan-77073a298/" target="_blank"><img src="images/linkedin.png" alt="LinkedIn" /></a>
-      <a href="https://wa.me/923136466450" target="_blank"><img src="images/whtsapp.png" alt="WhatsApp" /></a>
+  <footer class="footer">
+    <div class="container footer-container">
+      <!-- Logo + Social -->
+      <div class="footer-col">
+        <h2 style="color:#fff;">Muhammad Hassan</h2>
+        <h3>Follow Me:</h3>
+        <div class="social-icons">
+          <a href="https://github.com/muhammadhassanmahar" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/muhammad-hassan-77073a298/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/923136466450" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li>Mobile App Development (Flutter)</li>
+          <li>Web Development</li>
+          <li>Firebase & Cloud Integration</li>
+          <li>UI/UX Design</li>
+          <li>API Integration</li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-phone"></i> +92 313 6466450</p>
+        <p><i class="fas fa-envelope"></i> hassanfullstackdev0@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Muhammad Hassan. All Rights Reserved.
     </div>
   </footer>
 
