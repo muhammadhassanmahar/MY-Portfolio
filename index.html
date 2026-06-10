@@ -3,252 +3,480 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Hassan - Flutter Developer</title>
+  <title>Muhammad Hassan — Full Stack & AI Developer</title>
+  <meta name="description" content="Muhammad Hassan — Full Stack Developer building Flutter apps, FastAPI backends, and AI multi-agent SaaS platforms." />
 
-  <!-- ✅ Favicon -->
   <link rel="icon" type="image/png" href="images/logo.jpg" />
 
-  <!-- ✅ Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
-  <!-- ✅ Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
-      --bg: #f9f9f9;
-      --text: #333;
-      --card: #fff;
-      --primary: #00bcd4;
-      --secondary: #009688;
+      --bg: #070b18;
+      --bg-soft: #0d1326;
+      --card: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.09);
+      --text: #e7ecf7;
+      --muted: #93a0bd;
+      --accent: #2dd4ff;
+      --accent-2: #7c5cff;
+      --accent-3: #1fe6a8;
+      --glow: rgba(45,212,255,0.35);
     }
-    body.dark {
-      --bg: #0f172a;
-      --text: #f1f5f9;
-      --card: #1e293b;
+    body.light {
+      --bg: #f5f7fc;
+      --bg-soft: #ffffff;
+      --card: rgba(12,18,38,0.03);
+      --card-border: rgba(12,18,38,0.10);
+      --text: #14203a;
+      --muted: #55617d;
+      --glow: rgba(124,92,255,0.20);
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); transition: all .3s; }
-
-    header { background: #222; padding: 20px 0; }
-    .container { width: 90%; max-width: 1200px; margin: auto; }
-
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    .logo { display: flex; align-items: center; gap: 10px; color: white; font-size: 1.5rem; font-weight: bold; }
-    .logo img { width: 40px; height: 40px; border-radius: 50%; }
-
-    nav a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 500; transition: color 0.3s; }
-    nav a:hover { color: var(--primary); }
-
-    .dark-toggle { cursor: pointer; font-size: 1.2rem; background: none; border: none; color: white; }
-
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background .4s ease, color .4s ease;
     }
-    .typing { font-size: 2.8rem; font-weight: bold; }
-    .fade-description { font-size: 1rem; margin-top: 20px; }
-    .cta-buttons { margin-top: 30px; }
-    .cta-buttons a {
-      display: inline-block; background: #fff; color: var(--secondary);
-      font-weight: 600; padding: 12px 20px; border-radius: 8px;
-      text-decoration: none; transition: all 0.3s;
-    }
-    .cta-buttons a:hover { background: var(--primary); color: #fff; }
+    ::selection { background: var(--accent); color: #04101a; }
 
-    section { padding: 60px 20px; }
-    h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--text); }
+    .container { width: 90%; max-width: 1180px; margin: auto; }
 
-    /* About */
-    .about { background: var(--card); border-radius: 10px; padding: 40px; box-shadow: 0 0 15px rgba(0,0,0,0.05); display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
-    .about-img img { max-width: 300px; border-radius: 10px; }
-
-    /* Skills */
-    .skills { background: var(--card); border-radius: 10px; padding: 40px; box-shadow: 0 0 15px rgba(0,0,0,0.05); }
-    .skills-categories { display: flex; flex-wrap: wrap; gap: 20px; }
-    .skill-box { flex: 1 1 30%; background: #f1f1f1; border-radius: 10px; padding: 20px; transition: transform .3s; }
-    body.dark .skill-box { background: #334155; }
-    .skill-box:hover { transform: translateY(-5px); }
-    .skill-box h3 { margin-bottom: 15px; text-align: center; color: var(--primary); }
-    .skill-item { margin-bottom: 20px; }
-    .skill-label { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-    .skill-label i { color: var(--primary); }
-    .skill-bar { background: #ddd; border-radius: 10px; height: 12px; }
-    .skill-bar-fill {
-      height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 10px; width: 0; transition: width 1.5s ease;
-    }
-    .skill-percentage { font-size: 0.85rem; text-align: right; }
-
-    /* Testimonials */
-    .testimonials { background: var(--card); border-radius: 10px; padding: 40px; box-shadow: 0 0 15px rgba(0,0,0,0.05); overflow: hidden; }
-    .testimonial-track { display: flex; gap: 20px; animation: scroll 20s linear infinite; }
-    .testimonial-card {
-      flex: 0 0 30%; min-width: 30%; background: #f1f5f9; padding: 20px;
-      border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    body.dark .testimonial-card { background: #334155; }
-    .testimonial-card p { font-size: 0.95rem; margin-bottom: 10px; }
-    .testimonial-card h4 { font-size: 1rem; color: var(--primary); }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* ---------- Animated background ---------- */
+    .bg-orbs { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+    .orb.a { width: 480px; height: 480px; background: var(--accent-2); top: -140px; left: -120px; animation: float1 16s ease-in-out infinite; }
+    .orb.b { width: 420px; height: 420px; background: var(--accent); bottom: -120px; right: -100px; animation: float2 19s ease-in-out infinite; }
+    .orb.c { width: 340px; height: 340px; background: var(--accent-3); top: 40%; left: 55%; opacity:.30; animation: float1 22s ease-in-out infinite reverse; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-50px,-40px)} }
+    .grid-overlay {
+      position: fixed; inset: 0; z-index: -1;
+      background-image: linear-gradient(var(--card-border) 1px, transparent 1px), linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+      background-size: 54px 54px; opacity: .25; -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 10%, transparent 75%); mask-image: radial-gradient(ellipse at 50% 0%, #000 10%, transparent 75%);
     }
 
-    /* Footer */
-    .footer { background: #111; color: #ccc; padding: 50px 20px; margin-top: 60px; }
-    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
-    .footer-col { flex: 1 1 200px; }
-    .footer-col h3 { color: #fff; margin-bottom: 20px; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; color: #ccc; }
-    .footer-col a { color: #ccc; text-decoration: none; }
-    .footer-col a:hover { color: var(--primary); }
-    .social-icons { display: flex; gap: 15px; margin-top: 10px; }
-    .social-icons a { font-size: 1.5rem; color: #fff; transition: color 0.3s; }
-    .social-icons a:hover { color: var(--primary); }
-    .footer-bottom { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333; color: #888; font-size: 0.9rem; }
-    @media (max-width:768px) {
-      .footer-container { flex-direction: column; }
+    /* ---------- Header ---------- */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 70%, transparent);
+      border-bottom: 1px solid var(--card-border);
+    }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .logo { display: flex; align-items: center; gap: 12px; font-family:'Sora',sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em; }
+    .logo img { width: 38px; height: 38px; border-radius: 11px; object-fit: cover; box-shadow: 0 0 0 1px var(--card-border); }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-weight: 500; font-size: .94rem; position: relative; transition: color .25s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background: var(--accent); transition: width .25s; }
+    .nav-links a:hover::after { width: 100%; }
+    .theme-btn { cursor: pointer; background: var(--card); border: 1px solid var(--card-border); color: var(--text); width:38px; height:38px; border-radius: 11px; font-size: 1rem; transition: transform .25s, background .25s; }
+    .theme-btn:hover { transform: rotate(20deg); }
+    .burger { display:none; background:none; border:none; color:var(--text); font-size:1.4rem; cursor:pointer; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 110px 0 90px; text-align: center; position: relative; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 9px; font-size: .82rem; font-weight: 500;
+      padding: 7px 16px; border-radius: 999px; border: 1px solid var(--card-border);
+      background: var(--card); color: var(--muted); margin-bottom: 28px;
+    }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 10px var(--accent-3); animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+    .hero h1 {
+      font-family: 'Sora', sans-serif; font-weight: 800; letter-spacing: -.03em;
+      font-size: clamp(2.4rem, 6.2vw, 4.6rem); line-height: 1.04; margin-bottom: 22px;
+    }
+    .grad-text {
+      background: linear-gradient(110deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+    #role { color: var(--accent); border-right: 2px solid var(--accent); padding-right: 4px; }
+
+    .hero p.lead { max-width: 620px; margin: 0 auto 36px; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: .96rem;
+      padding: 13px 26px; border-radius: 12px; text-decoration: none; cursor: pointer; border: 1px solid transparent;
+      transition: transform .2s ease, box-shadow .25s ease;
+    }
+    .btn-primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #051018; box-shadow: 0 8px 30px var(--glow); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px var(--glow); }
+    .btn-ghost { background: var(--card); border-color: var(--card-border); color: var(--text); }
+    .btn-ghost:hover { transform: translateY(-3px); border-color: var(--accent); }
+
+    .stats { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 60px; }
+    .stat { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 22px 30px; min-width: 150px; backdrop-filter: blur(8px); }
+    .stat b { font-family:'Sora',sans-serif; font-size: 2rem; display: block; color: var(--text); }
+    .stat span { color: var(--muted); font-size: .86rem; }
+
+    /* ---------- Section frame ---------- */
+    section.block { padding: 80px 0; }
+    .eyebrow { font-family:'JetBrains Mono', monospace; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .sec-head { margin-bottom: 50px; }
+    .sec-head h2 { font-family:'Sora',sans-serif; font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.02em; }
+    .sec-head p { color: var(--muted); margin-top: 10px; max-width: 560px; }
+
+    /* ---------- About ---------- */
+    .about-grid { display: grid; grid-template-columns: 320px 1fr; gap: 50px; align-items: center; }
+    .about-photo { position: relative; }
+    .about-photo img { width: 100%; border-radius: 22px; border: 1px solid var(--card-border); display:block; }
+    .about-photo::before { content:''; position:absolute; inset:-2px; border-radius:24px; background: linear-gradient(120deg, var(--accent), var(--accent-2)); z-index:-1; filter: blur(14px); opacity:.5; }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .about-text strong { color: var(--text); }
+    .chips { display:flex; flex-wrap:wrap; gap:10px; margin-top: 18px; }
+    .chip { font-size:.82rem; padding:7px 14px; border-radius:999px; background:var(--card); border:1px solid var(--card-border); color:var(--muted); font-family:'JetBrains Mono',monospace; }
+
+    /* ---------- AIXL Spotlight ---------- */
+    .spotlight {
+      position: relative; border-radius: 26px; overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: linear-gradient(160deg, var(--bg-soft), color-mix(in srgb, var(--accent-2) 14%, var(--bg-soft)));
+      padding: 50px;
+    }
+    .spotlight::after { content:''; position:absolute; top:-40%; right:-10%; width:380px; height:380px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity:.18; }
+    .spotlight .tag { font-family:'JetBrains Mono',monospace; font-size:.78rem; color: var(--accent-3); letter-spacing:.1em; }
+    .spotlight h3 { font-family:'Sora',sans-serif; font-size: 2rem; margin: 8px 0 14px; letter-spacing:-.02em; }
+    .spotlight > p { color: var(--muted); max-width: 640px; line-height: 1.75; }
+    .agent-progress { margin: 30px 0 8px; max-width: 560px; }
+    .agent-progress .labels { display:flex; justify-content: space-between; font-size:.85rem; color:var(--muted); margin-bottom:10px; }
+    .agent-progress .labels b { color: var(--accent); font-family:'Sora',sans-serif; }
+    .track { height: 12px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden; border:1px solid var(--card-border); }
+    .track .fill { height:100%; width:0; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 0 14px var(--glow); transition: width 2s cubic-bezier(.2,.8,.2,1); }
+    .agent-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap:14px; margin-top: 30px; }
+    .agent { background: var(--card); border:1px solid var(--card-border); border-radius:14px; padding:16px; transition: transform .25s, border-color .25s; }
+    .agent:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .agent i { color: var(--accent); font-size:1.2rem; }
+    .agent h5 { font-family:'Sora',sans-serif; font-size:.98rem; margin:10px 0 4px; }
+    .agent span { font-size:.8rem; color: var(--muted); }
+    .agent.ghost { opacity:.5; border-style: dashed; }
+
+    /* ---------- Skills ---------- */
+    .skill-cols { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+    .skill-card { background: var(--card); border:1px solid var(--card-border); border-radius:18px; padding:26px; backdrop-filter: blur(8px); transition: transform .3s, border-color .3s; }
+    .skill-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+    .skill-card h3 { font-family:'Sora',sans-serif; font-size:1.1rem; margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+    .skill-card h3 i { color: var(--accent); }
+    .skill-item { margin-bottom: 16px; }
+    .skill-item .row { display:flex; justify-content:space-between; font-size:.88rem; margin-bottom:7px; color: var(--muted); }
+    .bar { height: 8px; background: rgba(255,255,255,.07); border-radius:999px; overflow:hidden; }
+    .bar .fil { height:100%; width:0; border-radius:999px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1.6s cubic-bezier(.2,.8,.2,1); }
+
+    /* ---------- Services ---------- */
+    .svc-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 20px; }
+    .svc { background: var(--card); border:1px solid var(--card-border); border-radius:18px; padding:28px; transition: transform .3s, border-color .3s; }
+    .svc:hover { transform: translateY(-6px); border-color: var(--accent); }
+    .svc .ic { width:48px; height:48px; border-radius:13px; display:grid; place-items:center; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color:#04101a; font-size:1.2rem; margin-bottom:16px; }
+    .svc h4 { font-family:'Sora',sans-serif; font-size:1.08rem; margin-bottom:8px; }
+    .svc p { color: var(--muted); font-size:.92rem; line-height:1.65; }
+
+    /* ---------- Testimonials ---------- */
+    .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display:flex; gap:20px; width:max-content; animation: slide 38s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .tcard { width: 330px; background: var(--card); border:1px solid var(--card-border); border-radius:18px; padding:24px; }
+    .tcard .stars { color: #ffc857; font-size:.85rem; margin-bottom:12px; }
+    .tcard p { color: var(--text); font-size:.95rem; line-height:1.65; margin-bottom:16px; }
+    .tcard h4 { font-family:'Sora',sans-serif; font-size:.92rem; }
+    .tcard h4 span { color: var(--muted); font-weight:400; font-size:.82rem; display:block; }
+
+    /* ---------- CTA banner ---------- */
+    .cta-banner { text-align:center; border:1px solid var(--card-border); border-radius:26px; padding:60px 30px; background: linear-gradient(160deg, var(--bg-soft), color-mix(in srgb, var(--accent) 10%, var(--bg-soft))); }
+    .cta-banner h2 { font-family:'Sora',sans-serif; font-size: clamp(1.7rem,4vw,2.4rem); margin-bottom:14px; letter-spacing:-.02em; }
+    .cta-banner p { color: var(--muted); margin-bottom:28px; }
+
+    /* ---------- Footer ---------- */
+    footer { border-top:1px solid var(--card-border); padding: 56px 0 30px; margin-top: 40px; }
+    .foot-grid { display:grid; grid-template-columns: 2fr 1fr 1fr; gap:40px; }
+    .foot-grid h2 { font-family:'Sora',sans-serif; font-size:1.3rem; margin-bottom:12px; }
+    .foot-grid p { color: var(--muted); font-size:.9rem; line-height:1.7; }
+    .foot-grid h3 { font-size:.95rem; margin-bottom:16px; }
+    .foot-grid ul { list-style:none; }
+    .foot-grid li { color: var(--muted); font-size:.9rem; margin-bottom:10px; }
+    .foot-grid a { color: var(--muted); text-decoration:none; transition:color .2s; }
+    .foot-grid a:hover { color: var(--accent); }
+    .socials { display:flex; gap:12px; margin-top:18px; }
+    .socials a { width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:var(--card); border:1px solid var(--card-border); color:var(--text); font-size:1.05rem; transition:transform .25s, color .25s, border-color .25s; }
+    .socials a:hover { transform:translateY(-4px); color:var(--accent); border-color:var(--accent); }
+    .foot-bottom { text-align:center; margin-top:44px; padding-top:24px; border-top:1px solid var(--card-border); color:var(--muted); font-size:.85rem; }
+
+    /* ---------- Reveal animation ---------- */
+    .reveal { opacity:0; transform: translateY(34px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.in { opacity:1; transform: none; }
+
+    @media (max-width: 880px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .skill-cols { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .spotlight { padding: 32px; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { position: fixed; inset: 64px 0 auto 0; flex-direction: column; background: var(--bg-soft); padding: 24px; border-bottom:1px solid var(--card-border); gap:18px; transform: translateY(-130%); transition: transform .35s; }
+      .nav-links.open { transform: none; }
+      .burger { display:block; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity:1; transform:none; }
     }
   </style>
 </head>
 <body>
+  <div class="bg-orbs"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+  <div class="grid-overlay"></div>
+
   <!-- Header -->
   <header>
     <div class="container">
       <nav>
-        <div class="logo"><img src="images/logo.jpg" alt="Logo" /> Muhammad Hassan</div>
-        <div>
+        <div class="logo"><img src="images/logo.jpg" alt="Logo" /> Hassan<span>.dev</span></div>
+        <div class="nav-links" id="navLinks">
           <a href="index.html">Home</a>
+          <a href="#about">About</a>
+          <a href="#aixl">AIXL</a>
+          <a href="#skills">Skills</a>
           <a href="portfolio.html">Portfolio</a>
           <a href="contact.html">Contact</a>
-          <button class="dark-toggle" onclick="toggleDark()">🌙</button>
+          <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
         </div>
+        <button class="burger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
   <section class="hero">
-    <h1 class="typing" id="typing"></h1>
-    <p class="fade-description">Full Stack Developer - Building beautiful mobile apps</p>
-    <div class="cta-buttons"><a href="Muhammad_Hassan_CV_OnePage.pdf" target="_blank">📄 Download CV</a></div>
+    <div class="container">
+      <span class="pill"><span class="dot"></span> Available for freelance &amp; contract work</span>
+      <h1>Building <span class="grad-text">AI-powered</span><br>products, end to end.</h1>
+      <h1 style="font-size:clamp(1.1rem,3vw,1.6rem);font-weight:600;margin-top:6px;"><span id="role"></span></h1>
+      <p class="lead">I’m Muhammad Hassan — a full stack developer crafting Flutter apps, FastAPI backends, and multi-agent AI SaaS platforms with clean architecture and thoughtful UX.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="portfolio.html"><i class="fa-solid fa-layer-group"></i> View Work</a>
+        <a class="btn btn-ghost" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b data-count="15">0</b><span>Projects shipped</span></div>
+        <div class="stat"><b data-count="6">0</b><span>AI agents live</span></div>
+        <div class="stat"><b data-count="3">0</b><span>Years building</span></div>
+        <div class="stat"><b data-count="100" data-suffix="%">0</b><span>Client focus</span></div>
+      </div>
+    </div>
   </section>
 
   <!-- About -->
-  <section class="about container">
-    <div>
-      <h2>About Me</h2>
-      <p>I am Muhammad Hassan, a passionate Flutter Developer with experience in creating intuitive and responsive mobile applications. I focus on clean UI, performance optimization, and a seamless user experience.</p>
+  <section class="block container reveal" id="about">
+    <div class="about-grid">
+      <div class="about-photo"><img src="images/about-me.jpg" alt="Muhammad Hassan"></div>
+      <div class="about-text">
+        <div class="eyebrow">// about me</div>
+        <h2 style="font-family:'Sora',sans-serif;font-size:1.9rem;letter-spacing:-.02em;margin-bottom:18px;">Full stack engineer with an AI focus</h2>
+        <p>I build <strong>scalable mobile apps, SaaS platforms, and AI automation agents</strong> using Flutter, Python, FastAPI, and MongoDB. From clean cross-platform UI to high-performance backends, I take products from idea to production.</p>
+        <p>Lately I’ve been deep in <strong>multi-agent AI systems</strong> — orchestrating LLM workflows, building remote MCP servers with per-user billing, OAuth integrations, and auto-schedulers. I care about architecture that holds up as products grow.</p>
+        <div class="chips">
+          <span class="chip">Flutter</span><span class="chip">FastAPI</span><span class="chip">MongoDB</span>
+          <span class="chip">Python</span><span class="chip">AI Agents</span><span class="chip">MCP</span><span class="chip">REST APIs</span>
+        </div>
+      </div>
     </div>
-    <div class="about-img"><img src="images/about-me.jpg" alt="About"></div>
+  </section>
+
+  <!-- AIXL Spotlight -->
+  <section class="block container reveal" id="aixl">
+    <div class="spotlight">
+      <span class="tag">// currently building</span>
+      <h3>AIXL — Multi-Agent Marketing SaaS</h3>
+      <p>AIXL is a multi-agent SaaS platform that automates marketing workflows end to end — content generation, research, scheduling, and publishing — powered by orchestrated AI agents. Built on Flutter web, FastAPI, and MongoDB with JWT auth, rate limiting, LinkedIn OAuth, a per-user auto-scheduler, and a remote MCP server with fixed-credit billing.</p>
+
+      <div class="agent-progress">
+        <div class="labels"><span>Agents built</span><span><b id="agentCount">6</b> / 1000 roadmap</span></div>
+        <div class="track"><div class="fill" data-fill="0.06"></div></div>
+      </div>
+
+      <div class="agent-grid">
+        <div class="agent"><i class="fa-solid fa-pen-nib"></i><h5>Content Agent</h5><span>Generates on-brand posts</span></div>
+        <div class="agent"><i class="fa-solid fa-magnifying-glass-chart"></i><h5>Research Agent</h5><span>Live topic research</span></div>
+        <div class="agent"><i class="fa-solid fa-calendar-check"></i><h5>Scheduler Agent</h5><span>Per-user timezone posting</span></div>
+        <div class="agent"><i class="fa-brands fa-linkedin"></i><h5>Publisher Agent</h5><span>Real LinkedIn posting</span></div>
+        <div class="agent"><i class="fa-solid fa-user-pen"></i><h5>Style Agent</h5><span>RAG-lite voice matching</span></div>
+        <div class="agent"><i class="fa-solid fa-list-check"></i><h5>Approvals Agent</h5><span>Review &amp; pipeline</span></div>
+        <div class="agent ghost"><i class="fa-solid fa-plus"></i><h5>+ 994 more</h5><span>Scaling the roadmap</span></div>
+      </div>
+    </div>
   </section>
 
   <!-- Skills -->
-  <section class="skills container">
-    <h2>Skills</h2>
-    <div class="skills-categories">
-      <!-- ✅ Technical Skills -->
-      <div class="skill-box">
-        <h3>Technical Skills</h3>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-flutter"></i> Flutter</div><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-dart"></i> Dart</div><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-database"></i> Firebase</div><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-python"></i> Python</div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-leaf"></i> MongoDB</div><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <!-- ✅ New Skill: API Fetching / Integration -->
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-plug"></i> API Fetching / Integration</div><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+  <section class="block container reveal" id="skills">
+    <div class="sec-head">
+      <div class="eyebrow">// capabilities</div>
+      <h2>Skills &amp; toolchain</h2>
+      <p>The stack I reach for when shipping reliable, scalable products.</p>
+    </div>
+    <div class="skill-cols">
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-code"></i> Frontend &amp; Mobile</h3>
+        <div class="skill-item"><div class="row"><span>Flutter</span><span>92%</span></div><div class="bar"><div class="fil" data-w="92"></div></div></div>
+        <div class="skill-item"><div class="row"><span>Dart</span><span>88%</span></div><div class="bar"><div class="fil" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="row"><span>Responsive UI / UX</span><span>85%</span></div><div class="bar"><div class="fil" data-w="85"></div></div></div>
       </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-server"></i> Backend &amp; Data</h3>
+        <div class="skill-item"><div class="row"><span>FastAPI / Python</span><span>88%</span></div><div class="bar"><div class="fil" data-w="88"></div></div></div>
+        <div class="skill-item"><div class="row"><span>MongoDB</span><span>82%</span></div><div class="bar"><div class="fil" data-w="82"></div></div></div>
+        <div class="skill-item"><div class="row"><span>REST APIs &amp; Auth (JWT)</span><span>87%</span></div><div class="bar"><div class="fil" data-w="87"></div></div></div>
+      </div>
+      <div class="skill-card">
+        <h3><i class="fa-solid fa-robot"></i> AI &amp; Automation</h3>
+        <div class="skill-item"><div class="row"><span>AI Agents &amp; LLM workflows</span><span>86%</span></div><div class="bar"><div class="fil" data-w="86"></div></div></div>
+        <div class="skill-item"><div class="row"><span>MCP &amp; API Integration</span><span>84%</span></div><div class="bar"><div class="fil" data-w="84"></div></div></div>
+        <div class="skill-item"><div class="row"><span>Firebase &amp; Cloud</span><span>80%</span></div><div class="bar"><div class="fil" data-w="80"></div></div></div>
+      </div>
+    </div>
+  </section>
 
-      <!-- ✅ Soft Skills -->
-      <div class="skill-box">
-        <h3>Soft Skills</h3>
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-comments"></i> Communication</div><div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-people-group"></i> Teamwork</div><div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
-      </div>
-
-      <!-- ✅ Tools -->
-      <div class="skill-box">
-        <h3>Tools</h3>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-git-alt"></i> Git</div><div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-github"></i> GitHub</div><div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-solid fa-paper-plane"></i> Postman</div><div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-slack"></i> Slack</div><div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
-        <div class="skill-item"><div class="skill-label"><i class="fa-brands fa-bitbucket"></i> Bitbucket</div><div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div></div>
-      </div>
+  <!-- Services -->
+  <section class="block container reveal" id="services">
+    <div class="sec-head">
+      <div class="eyebrow">// what i do</div>
+      <h2>Services</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="ic"><i class="fa-solid fa-mobile-screen"></i></div><h4>Mobile App Development</h4><p>Cross-platform Flutter apps with clean UI, smooth performance, and production-ready architecture.</p></div>
+      <div class="svc"><div class="ic"><i class="fa-solid fa-diagram-project"></i></div><h4>AI SaaS &amp; Agents</h4><p>Multi-agent platforms, LLM automation pipelines, and MCP servers with billing and auth layers.</p></div>
+      <div class="svc"><div class="ic"><i class="fa-solid fa-server"></i></div><h4>Backend Engineering</h4><p>FastAPI + MongoDB systems with JWT auth, rate limiting, schedulers, and third-party integrations.</p></div>
+      <div class="svc"><div class="ic"><i class="fa-solid fa-plug"></i></div><h4>API Integration</h4><p>OAuth flows, webhooks, and reliable connections to services like LinkedIn, Zendesk, and Firebase.</p></div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="testimonials container">
-    <h2>What Clients Say</h2>
-    <div class="testimonial-track">
-      <div class="testimonial-card"><p>“Our e-commerce app was delivered ahead of schedule with a flawless checkout system.”</p><h4>- Ali Khan, ShopNow</h4></div>
-      <div class="testimonial-card"><p>“Secure healthcare app built for our patients. Very reliable and compliant.”</p><h4>- Dr. Sarah, MedLink</h4></div>
-      <div class="testimonial-card"><p>“The LMS app for our academy works flawlessly, students love it.”</p><h4>- John Smith, EduPro</h4></div>
-      <div class="testimonial-card"><p>“Modern dating app with safe UI and smooth onboarding. Great job!”</p><h4>- Fatima Noor, SparkMatch</h4></div>
-      <div class="testimonial-card"><p>“POS app delivered in 2 weeks. Highly efficient and user-friendly.”</p><h4>- Ahmed Raza, Retailer</h4></div>
-      <div class="testimonial-card"><p>“He quickly understood our fintech requirements and built a secure wallet app.”</p><h4>- Maryam Ali, FinStart</h4></div>
-      <div class="testimonial-card"><p>“Excellent logistics app with real-time tracking.”</p><h4>- James Brown, CargoX</h4></div>
-      <div class="testimonial-card"><p>“Food delivery app scaled smoothly to thousands of users.”</p><h4>- Ayesha Malik, Foodiez</h4></div>
-      <div class="testimonial-card"><p>“Donation app for our NGO delivered on time and within budget.”</p><h4>- Bilal Ahmed, HelpingHands</h4></div>
-      <div class="testimonial-card"><p>“Real estate app with maps and listings that work seamlessly.”</p><h4>- Sophia Khan, DreamHomes</h4></div>
+  <section class="block container reveal" style="padding-bottom:30px;">
+    <div class="sec-head">
+      <div class="eyebrow">// kind words</div>
+      <h2>What clients say</h2>
+    </div>
+  </section>
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="tcard"><div class="stars">★★★★★</div><p>Our e-commerce app was delivered ahead of schedule with a flawless checkout system.</p><h4>Ali Khan <span>ShopNow</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>Built a secure, compliant healthcare app our patients trust. Very reliable.</p><h4>Dr. Sarah <span>MedLink</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>The AI automation system handles our support tickets exactly as promised.</p><h4>Owner <span>Raw Aura</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>Modern dating app with safe UI and smooth onboarding. Great job!</p><h4>Fatima Noor <span>SparkMatch</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>He understood our fintech requirements fast and built a secure wallet app.</p><h4>Maryam Ali <span>FinStart</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>Our e-commerce app was delivered ahead of schedule with a flawless checkout system.</p><h4>Ali Khan <span>ShopNow</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>Built a secure, compliant healthcare app our patients trust. Very reliable.</p><h4>Dr. Sarah <span>MedLink</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>The AI automation system handles our support tickets exactly as promised.</p><h4>Owner <span>Raw Aura</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>Modern dating app with safe UI and smooth onboarding. Great job!</p><h4>Fatima Noor <span>SparkMatch</span></h4></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>He understood our fintech requirements fast and built a secure wallet app.</p><h4>Maryam Ali <span>FinStart</span></h4></div>
+    </div>
+  </div>
+
+  <!-- CTA banner -->
+  <section class="block container reveal">
+    <div class="cta-banner">
+      <h2>Have a product in mind?</h2>
+      <p>Let’s build something fast, scalable, and genuinely useful.</p>
+      <a class="btn btn-primary" href="contact.html"><i class="fa-solid fa-paper-plane"></i> Start a conversation</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-container">
-      <!-- Logo + Social -->
-      <div class="footer-col">
-        <h2 style="color:#fff;">Muhammad Hassan</h2>
-        <h3>Follow Me:</h3>
-        <div class="social-icons">
-          <a href="https://github.com/muhammadhassanmahar" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/muhammad-hassan-77073a298/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/923301351896" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <h2>Muhammad Hassan</h2>
+          <p>Full Stack &amp; AI Developer building Flutter apps, FastAPI backends, and multi-agent SaaS platforms.</p>
+          <div class="socials">
+            <a href="https://github.com/muhammadhassanmahar" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/muhammad-hassan-77073a298/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923301351896" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Services</h3>
+          <ul>
+            <li>Mobile App Development</li>
+            <li>AI SaaS &amp; Agents</li>
+            <li>Backend Engineering</li>
+            <li>API Integration</li>
+            <li>UI / UX Design</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Get in touch</h3>
+          <ul>
+            <li><a href="tel:+923301351896"><i class="fas fa-phone"></i> +92 330 1351896</a></li>
+            <li><a href="mailto:hassanfullstackdev0@gmail.com"><i class="fas fa-envelope"></i> hassanfullstackdev0@gmail.com</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Pakistan</li>
+          </ul>
         </div>
       </div>
-
-      <!-- Services -->
-      <div class="footer-col">
-        <h3>Services</h3>
-        <ul>
-          <li>Mobile App Development (Flutter)</li>
-          <li>Web Development</li>
-          <li>Firebase & Cloud Integration</li>
-          <li>API Integration</li>
-          <li>UI/UX Design</li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h3>Get In Touch</h3>
-        <p><i class="fas fa-phone"></i> +92 3301351896</p>
-        <p><i class="fas fa-envelope"></i> hassanfullstackdev0@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Pakistan</p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © 2025 Muhammad Hassan. All Rights Reserved.
+      <div class="foot-bottom">© 2026 Muhammad Hassan. All rights reserved.</div>
     </div>
   </footer>
 
   <script>
-    function toggleDark() {
-      document.body.classList.toggle("dark");
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const ic = document.getElementById('themeIcon');
+      ic.className = document.body.classList.contains('light') ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
 
-    const phrases = ["Muhammad Hassan", "Problem Solver", "Full Stack Developer"];
-    let i = 0, el = document.getElementById("typing");
-    setInterval(()=>{ el.textContent = phrases[i]; i = (i+1)%phrases.length; },1500);
+    const roles = ["Full Stack Developer", "Flutter Engineer", "AI Agent Builder", "FastAPI Backend Dev"];
+    const el = document.getElementById('role');
+    let r = 0, c = 0, deleting = false;
+    function type() {
+      const word = roles[r];
+      el.textContent = word.slice(0, c);
+      if (!deleting && c < word.length) { c++; setTimeout(type, 90); }
+      else if (!deleting && c === word.length) { deleting = true; setTimeout(type, 1500); }
+      else if (deleting && c > 0) { c--; setTimeout(type, 45); }
+      else { deleting = false; r = (r + 1) % roles.length; setTimeout(type, 300); }
+    }
+    type();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.fil').forEach(b => b.style.width = b.dataset.w + '%');
+        e.target.querySelectorAll('.fill').forEach(b => b.style.width = (b.dataset.fill * 100) + '%');
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.18 });
+    document.querySelectorAll('.reveal').forEach(s => io.observe(s));
+
+    const statIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const n = e.target, target = +n.dataset.count, suf = n.dataset.suffix || '';
+        let cur = 0; const step = Math.max(1, Math.round(target / 40));
+        const t = setInterval(() => {
+          cur += step;
+          if (cur >= target) { cur = target; clearInterval(t); }
+          n.textContent = cur + suf;
+        }, 30);
+        statIO.unobserve(n);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat b').forEach(s => statIO.observe(s));
+
+    document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
   </script>
 </body>
 </html>
